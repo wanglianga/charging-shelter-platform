@@ -310,6 +310,12 @@ npm run dev
 - `GET /api/meter-readings/socket/{socketId}` - 获取插座的电表读数
 - `POST /api/meter-readings` - 上报电表读数
 
+### 夜间安全策略
+- `GET /api/night-safety/summary` - 获取夜间安全概览统计
+- `GET /api/night-safety/high-risk-orders` - 获取高风险订单列表
+- `GET /api/night-safety/inspection-focus` - 获取重点巡检车位列表
+- `GET /api/night-safety/is-night-time` - 判断当前是否为夜间时段
+
 ## 注意事项
 
 1. 开发环境默认使用 H2 内存数据库，数据不会持久化

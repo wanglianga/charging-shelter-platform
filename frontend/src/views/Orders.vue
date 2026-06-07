@@ -50,6 +50,19 @@
         <el-table-column prop="startTime" label="开始时间" width="160" />
         <el-table-column prop="endTime" label="结束时间" width="160" />
         <el-table-column prop="chargedKwh" label="充电量(kWh)" width="110" />
+        <el-table-column prop="batteryType" label="电池类型" width="110">
+          <template #default="{ row }">
+            {{ getBatteryTypeName(row.batteryType) }}
+          </template>
+        </el-table-column>
+        <el-table-column prop="currentTemperature" label="温度(°C)" width="100">
+          <template #default="{ row }">
+            <span v-if="row.currentTemperature" :style="{ color: row.currentTemperature >= 50 ? '#f56c6c' : row.currentTemperature >= 40 ? '#e6a23c' : '#67c23a', fontWeight: 'bold' }">
+              {{ row.currentTemperature.toFixed(1) }}
+            </span>
+            <span v-else style="color: #909399">-</span>
+          </template>
+        </el-table-column>
         <el-table-column prop="totalAmount" label="费用(元)" width="100">
           <template #default="{ row }">
             <span style="color: #f56c6c; font-weight: bold">¥{{ row.totalAmount || '0.00' }}</span>
@@ -114,6 +127,13 @@
         <el-descriptions-item label="超时费">¥{{ selectedOrder.penaltyFee || '0.00' }}</el-descriptions-item>
         <el-descriptions-item label="总费用" :span="2">
           <span style="color: #f56c6c; font-size: 18px; font-weight: bold">¥{{ selectedOrder.totalAmount || '0.00' }}</span>
+        </el-descriptions-item>
+        <el-descriptions-item label="电池类型">{{ getBatteryTypeName(selectedOrder.batteryType) }}</el-descriptions-item>
+        <el-descriptions-item label="当前温度">
+          <span v-if="selectedOrder.currentTemperature" :style="{ color: selectedOrder.currentTemperature >= 50 ? '#f56c6c' : selectedOrder.currentTemperature >= 40 ? '#e6a23c' : '#67c23a', fontWeight: 'bold' }">
+            {{ selectedOrder.currentTemperature.toFixed(1) }}°C
+          </span>
+          <span v-else>-</span>
         </el-descriptions-item>
         <el-descriptions-item label="开始时间">{{ selectedOrder.startTime }}</el-descriptions-item>
         <el-descriptions-item label="结束时间">{{ selectedOrder.endTime || '-' }}</el-descriptions-item>
@@ -184,6 +204,17 @@ const getSocketCode = (socketId) => {
 const getShelterName = (shelterId) => {
   const shelter = shelters.value.find(s => s.id === shelterId)
   return shelter ? shelter.name : '-'
+}
+
+const getBatteryTypeName = (type) => {
+  const map = {
+    LEAD_ACID: '铅酸电池',
+    LITHIUM_ION: '锂离子电池',
+    LITHIUM_IRON_PHOSPHATE: '磷酸铁锂电池',
+    NICKEL_METAL_HYDRIDE: '镍氢电池',
+    UNKNOWN: '未知类型'
+  }
+  return map[type] || type || '未知类型'
 }
 
 const loadData = async () => {

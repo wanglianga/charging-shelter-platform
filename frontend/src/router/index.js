@@ -61,6 +61,11 @@ const routes = [
         path: 'fee-rules',
         name: 'FeeRules',
         component: () => import('../views/FeeRules.vue')
+      },
+      {
+        path: 'night-safety',
+        name: 'NightSafety',
+        component: () => import('../views/NightSafety.vue')
       }
     ]
   }

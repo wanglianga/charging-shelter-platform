@@ -20,4 +20,8 @@ public interface AlarmRepository extends JpaRepository<Alarm, Long> {
     List<Alarm> findByHandlerId(Long handlerId);
 
     List<Alarm> findByTypeAndStatus(AlarmType type, AlarmStatus status);
+
+    List<Alarm> findBySocketId(Long socketId);
+
+    List<Alarm> findBySocketIdOrderByCreatedAtDesc(Long socketId);
 }

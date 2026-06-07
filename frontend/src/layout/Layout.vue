@@ -51,6 +51,10 @@
           <el-icon><Money /></el-icon>
           <span>收费规则</span>
         </el-menu-item>
+        <el-menu-item index="/night-safety">
+          <el-icon><Moon /></el-icon>
+          <span>夜间安全巡检</span>
+        </el-menu-item>
       </el-menu>
     </el-aside>
     <el-container>

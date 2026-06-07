@@ -29,6 +29,12 @@ public class ChargingSocket {
 
     private String qrCode;
 
+    private Double currentTemperature;
+
+    private Integer tripCount;
+
+    private LocalDateTime lastTripTime;
+
     private LocalDateTime lastMaintenanceTime;
 
     private LocalDateTime createdAt;
@@ -100,6 +106,30 @@ public class ChargingSocket {
 
     public void setQrCode(String qrCode) {
         this.qrCode = qrCode;
+    }
+
+    public Double getCurrentTemperature() {
+        return currentTemperature;
+    }
+
+    public void setCurrentTemperature(Double currentTemperature) {
+        this.currentTemperature = currentTemperature;
+    }
+
+    public Integer getTripCount() {
+        return tripCount;
+    }
+
+    public void setTripCount(Integer tripCount) {
+        this.tripCount = tripCount;
+    }
+
+    public LocalDateTime getLastTripTime() {
+        return lastTripTime;
+    }
+
+    public void setLastTripTime(LocalDateTime lastTripTime) {
+        this.lastTripTime = lastTripTime;
     }
 
     public LocalDateTime getLastMaintenanceTime() {

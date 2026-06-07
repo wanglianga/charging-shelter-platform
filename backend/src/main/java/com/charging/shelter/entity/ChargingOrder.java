@@ -1,5 +1,6 @@
 package com.charging.shelter.entity;
 
+import com.charging.shelter.enums.BatteryType;
 import com.charging.shelter.enums.OrderStatus;
 
 import javax.persistence.*;
@@ -49,6 +50,11 @@ public class ChargingOrder {
     private Double penaltyFee;
 
     private LocalDateTime paidTime;
+
+    @Enumerated(EnumType.STRING)
+    private BatteryType batteryType;
+
+    private Double currentTemperature;
 
     private String remark;
 
@@ -201,6 +207,22 @@ public class ChargingOrder {
 
     public void setPaidTime(LocalDateTime paidTime) {
         this.paidTime = paidTime;
+    }
+
+    public BatteryType getBatteryType() {
+        return batteryType;
+    }
+
+    public void setBatteryType(BatteryType batteryType) {
+        this.batteryType = batteryType;
+    }
+
+    public Double getCurrentTemperature() {
+        return currentTemperature;
+    }
+
+    public void setCurrentTemperature(Double currentTemperature) {
+        this.currentTemperature = currentTemperature;
     }
 
     public String getRemark() {

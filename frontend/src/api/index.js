@@ -94,3 +94,10 @@ export const meterReadingApi = {
   findBySocketId: (socketId) => request.get(`/meter-readings/socket/${socketId}`),
   save: (data) => request.post('/meter-readings', data)
 }
+
+export const nightSafetyApi = {
+  getSummary: () => request.get('/night-safety/summary'),
+  getHighRiskOrders: () => request.get('/night-safety/high-risk-orders'),
+  getInspectionFocus: () => request.get('/night-safety/inspection-focus'),
+  isNightTime: () => request.get('/night-safety/is-night-time')
+}
