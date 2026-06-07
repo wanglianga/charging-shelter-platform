@@ -4,7 +4,6 @@ import com.charging.shelter.dto.Result;
 import com.charging.shelter.entity.Inspection;
 import com.charging.shelter.enums.InspectionType;
 import com.charging.shelter.service.InspectionService;
-import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -63,8 +62,15 @@ public class InspectionController {
         }
     }
 
-    @Data
     public static class ResolveRequest {
         private String handleSuggestion;
+
+        public String getHandleSuggestion() {
+            return handleSuggestion;
+        }
+
+        public void setHandleSuggestion(String handleSuggestion) {
+            this.handleSuggestion = handleSuggestion;
+        }
     }
 }

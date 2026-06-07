@@ -9,5 +9,5 @@ import java.util.Optional;
 @Repository
 public interface FeeRuleRepository extends JpaRepository<FeeRule, Long> {
 
-    Optional<FeeRule> findByIsActiveTrue();
+    Optional<FeeRule> findByActiveTrue();
 }

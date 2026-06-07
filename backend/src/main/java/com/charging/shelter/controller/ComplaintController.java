@@ -3,7 +3,6 @@ package com.charging.shelter.controller;
 import com.charging.shelter.dto.Result;
 import com.charging.shelter.entity.Complaint;
 import com.charging.shelter.service.ComplaintService;
-import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -57,9 +56,24 @@ public class ComplaintController {
         }
     }
 
-    @Data
     public static class HandleRequest {
         private Long handlerId;
         private String handleResult;
+
+        public Long getHandlerId() {
+            return handlerId;
+        }
+
+        public void setHandlerId(Long handlerId) {
+            this.handlerId = handlerId;
+        }
+
+        public String getHandleResult() {
+            return handleResult;
+        }
+
+        public void setHandleResult(String handleResult) {
+            this.handleResult = handleResult;
+        }
     }
 }

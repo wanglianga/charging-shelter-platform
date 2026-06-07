@@ -40,8 +40,8 @@ public class InspectionService {
     }
 
     public Inspection save(Inspection inspection) {
-        if (inspection.getIsResolved() == null) {
-            inspection.setIsResolved(false);
+        if (inspection.getResolved() == null) {
+            inspection.setResolved(false);
         }
         return inspectionRepository.save(inspection);
     }
@@ -50,7 +50,7 @@ public class InspectionService {
         Optional<Inspection> inspectionOpt = inspectionRepository.findById(inspectionId);
         if (inspectionOpt.isPresent()) {
             Inspection inspection = inspectionOpt.get();
-            inspection.setIsResolved(true);
+            inspection.setResolved(true);
             inspection.setHandleSuggestion(handleSuggestion);
             return inspectionRepository.save(inspection);
         }

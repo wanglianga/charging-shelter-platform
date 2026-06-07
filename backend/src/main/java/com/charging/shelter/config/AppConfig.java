@@ -153,7 +153,7 @@ public class AppConfig {
             rule.setOvertimePenalty(5.0);
             rule.setFreeMinutes(30);
             rule.setMaxChargingHours(8);
-            rule.setIsActive(true);
+            rule.setActive(true);
             rule.setDescription("小区统一充电收费标准");
             feeRuleService.save(rule);
         }

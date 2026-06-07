@@ -1,12 +1,10 @@
 package com.charging.shelter.entity;
 
 import com.charging.shelter.enums.ReservationStatus;
-import lombok.Data;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@Data
 @Entity
 @Table(name = "reservations")
 public class Reservation {
@@ -52,5 +50,109 @@ public class Reservation {
     @PreUpdate
     protected void onUpdate() {
         updatedAt = LocalDateTime.now();
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public Long getSocketId() {
+        return socketId;
+    }
+
+    public void setSocketId(Long socketId) {
+        this.socketId = socketId;
+    }
+
+    public Long getShelterId() {
+        return shelterId;
+    }
+
+    public void setShelterId(Long shelterId) {
+        this.shelterId = shelterId;
+    }
+
+    public ReservationStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(ReservationStatus status) {
+        this.status = status;
+    }
+
+    public LocalDateTime getReservationTime() {
+        return reservationTime;
+    }
+
+    public void setReservationTime(LocalDateTime reservationTime) {
+        this.reservationTime = reservationTime;
+    }
+
+    public LocalDateTime getExpectedStartTime() {
+        return expectedStartTime;
+    }
+
+    public void setExpectedStartTime(LocalDateTime expectedStartTime) {
+        this.expectedStartTime = expectedStartTime;
+    }
+
+    public LocalDateTime getExpectedEndTime() {
+        return expectedEndTime;
+    }
+
+    public void setExpectedEndTime(LocalDateTime expectedEndTime) {
+        this.expectedEndTime = expectedEndTime;
+    }
+
+    public LocalDateTime getCheckInTime() {
+        return checkInTime;
+    }
+
+    public void setCheckInTime(LocalDateTime checkInTime) {
+        this.checkInTime = checkInTime;
+    }
+
+    public LocalDateTime getCancelTime() {
+        return cancelTime;
+    }
+
+    public void setCancelTime(LocalDateTime cancelTime) {
+        this.cancelTime = cancelTime;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }

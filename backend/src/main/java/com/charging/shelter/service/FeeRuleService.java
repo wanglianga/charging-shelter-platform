@@ -24,15 +24,15 @@ public class FeeRuleService {
     }
 
     public Optional<FeeRule> findActive() {
-        return feeRuleRepository.findByIsActiveTrue();
+        return feeRuleRepository.findByActiveTrue();
     }
 
     @Transactional
     public FeeRule save(FeeRule feeRule) {
-        if (feeRule.getIsActive() != null && feeRule.getIsActive()) {
+        if (feeRule.getActive() != null && feeRule.getActive()) {
             feeRuleRepository.findAll().forEach(rule -> {
                 if (!rule.getId().equals(feeRule.getId())) {
-                    rule.setIsActive(false);
+                    rule.setActive(false);
                     feeRuleRepository.save(rule);
                 }
             });

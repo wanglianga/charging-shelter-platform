@@ -4,7 +4,6 @@ import com.charging.shelter.dto.Result;
 import com.charging.shelter.entity.ChargingOrder;
 import com.charging.shelter.enums.OrderStatus;
 import com.charging.shelter.service.OrderService;
-import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -82,10 +81,33 @@ public class OrderController {
         }
     }
 
-    @Data
     public static class StartChargingRequest {
         private Long userId;
         private Long socketId;
         private Long reservationId;
+
+        public Long getUserId() {
+            return userId;
+        }
+
+        public void setUserId(Long userId) {
+            this.userId = userId;
+        }
+
+        public Long getSocketId() {
+            return socketId;
+        }
+
+        public void setSocketId(Long socketId) {
+            this.socketId = socketId;
+        }
+
+        public Long getReservationId() {
+            return reservationId;
+        }
+
+        public void setReservationId(Long reservationId) {
+            this.reservationId = reservationId;
+        }
     }
 }

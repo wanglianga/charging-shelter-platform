@@ -5,7 +5,6 @@ import com.charging.shelter.entity.Alarm;
 import com.charging.shelter.enums.AlarmStatus;
 import com.charging.shelter.enums.AlarmType;
 import com.charging.shelter.service.AlarmService;
-import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -77,13 +76,27 @@ public class AlarmController {
         }
     }
 
-    @Data
     public static class ProcessRequest {
         private Long handlerId;
+
+        public Long getHandlerId() {
+            return handlerId;
+        }
+
+        public void setHandlerId(Long handlerId) {
+            this.handlerId = handlerId;
+        }
     }
 
-    @Data
     public static class HandleRequest {
         private String handleResult;
+
+        public String getHandleResult() {
+            return handleResult;
+        }
+
+        public void setHandleResult(String handleResult) {
+            this.handleResult = handleResult;
+        }
     }
 }

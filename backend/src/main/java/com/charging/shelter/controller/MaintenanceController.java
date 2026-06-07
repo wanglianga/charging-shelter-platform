@@ -3,7 +3,6 @@ package com.charging.shelter.controller;
 import com.charging.shelter.dto.Result;
 import com.charging.shelter.entity.MaintenanceRecord;
 import com.charging.shelter.service.MaintenanceService;
-import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -57,8 +56,15 @@ public class MaintenanceController {
         }
     }
 
-    @Data
     public static class CompleteRequest {
         private String remark;
+
+        public String getRemark() {
+            return remark;
+        }
+
+        public void setRemark(String remark) {
+            this.remark = remark;
+        }
     }
 }

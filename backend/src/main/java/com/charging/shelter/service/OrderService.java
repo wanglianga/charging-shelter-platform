@@ -74,7 +74,7 @@ public class OrderService {
             throw new RuntimeException("插座状态异常，无法开始充电");
         }
 
-        FeeRule feeRule = feeRuleRepository.findByIsActiveTrue()
+        FeeRule feeRule = feeRuleRepository.findByActiveTrue()
                 .orElseThrow(() -> new RuntimeException("收费规则未配置"));
 
         List<MeterReading> readings = meterReadingService.findBySocketId(socketId);
@@ -125,7 +125,7 @@ public class OrderService {
         long minutes = ChronoUnit.MINUTES.between(order.getStartTime(), endTime);
         double amount = order.getChargedKwh() * order.getUnitPrice() + order.getBaseFee();
 
-        FeeRule feeRule = feeRuleRepository.findByIsActiveTrue().orElse(null);
+        FeeRule feeRule = feeRuleRepository.findByActiveTrue().orElse(null);
         if (feeRule != null && minutes > feeRule.getMaxChargingHours() * 60) {
             order.setPenaltyFee(feeRule.getOvertimePenalty());
             amount += order.getPenaltyFee();

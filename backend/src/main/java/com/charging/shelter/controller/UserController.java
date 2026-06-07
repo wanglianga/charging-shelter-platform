@@ -4,7 +4,6 @@ import com.charging.shelter.dto.Result;
 import com.charging.shelter.entity.User;
 import com.charging.shelter.enums.UserRole;
 import com.charging.shelter.service.UserService;
-import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -60,7 +59,7 @@ public class UserController {
     @PutMapping("/{id}/blacklist")
     public Result<User> setBlacklist(@PathVariable Long id, @RequestBody BlacklistRequest request) {
         try {
-            return Result.success(userService.setBlacklist(id, request.getIsBlacklisted()));
+            return Result.success(userService.setBlacklist(id, request.getBlacklisted()));
         } catch (Exception e) {
             return Result.error(e.getMessage());
         }
@@ -74,14 +73,36 @@ public class UserController {
                 .orElse(Result.error("用户名或密码错误"));
     }
 
-    @Data
     public static class BlacklistRequest {
-        private Boolean isBlacklisted;
+        private Boolean blacklisted;
+
+        public Boolean getBlacklisted() {
+            return blacklisted;
+        }
+
+        public void setBlacklisted(Boolean blacklisted) {
+            this.blacklisted = blacklisted;
+        }
     }
 
-    @Data
     public static class LoginRequest {
         private String username;
         private String password;
+
+        public String getUsername() {
+            return username;
+        }
+
+        public void setUsername(String username) {
+            this.username = username;
+        }
+
+        public String getPassword() {
+            return password;
+        }
+
+        public void setPassword(String password) {
+            this.password = password;
+        }
     }
 }

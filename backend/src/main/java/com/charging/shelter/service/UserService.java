@@ -32,21 +32,21 @@ public class UserService {
     }
 
     public List<User> findBlacklisted() {
-        return userRepository.findByIsBlacklistedTrue();
+        return userRepository.findByBlacklistedTrue();
     }
 
     public User save(User user) {
-        if (user.getIsBlacklisted() == null) {
-            user.setIsBlacklisted(false);
+        if (user.getBlacklisted() == null) {
+            user.setBlacklisted(false);
         }
         return userRepository.save(user);
     }
 
-    public User setBlacklist(Long userId, boolean isBlacklisted) {
+    public User setBlacklist(Long userId, boolean blacklisted) {
         Optional<User> userOpt = userRepository.findById(userId);
         if (userOpt.isPresent()) {
             User user = userOpt.get();
-            user.setIsBlacklisted(isBlacklisted);
+            user.setBlacklisted(blacklisted);
             return userRepository.save(user);
         }
         throw new RuntimeException("用户不存在");
